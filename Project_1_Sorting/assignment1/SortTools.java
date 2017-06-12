@@ -23,7 +23,7 @@ public class SortTools {
 						return false;
 
 				for (int j = 1; j < n; j++){
-						if (x[j-1] >= x[j])
+						if (x[j] < x[j-1])
 								return false;
 				}
 				return true;
@@ -90,9 +90,13 @@ public class SortTools {
 		  */
 
 		public static int insertInPlace(int[] x, int n, int v){
-				if (find(x,n,v) != -1)
+				int location = find(x,n,v);
+				if (location == -1)
 						return n;
-				x = insertGeneral(x,n,v);
+				for(int end = n; end > location; end--){
+						x[end] = x[end-1];
+				}
+				x[location] = v;
 				return n+1;
 		}
 		
