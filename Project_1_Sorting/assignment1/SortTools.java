@@ -90,13 +90,14 @@ public class SortTools {
 		  */
 
 		public static int insertInPlace(int[] x, int n, int v){
-				int location = find(x,n,v);
-				if (location == -1)
+				if (find(x,n,v) != -1)
 						return n;
-				for(int end = n; end > location; end--){
+				int end = n;
+				while (v < x[end]){
 						x[end] = x[end-1];
+						end -= 1;
 				}
-				x[location] = v;
+				x[end+1] = v;
 				return n+1;
 		}
 		
