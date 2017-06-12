@@ -30,7 +30,7 @@ public class SortTools {
 		}
 
 		/**
-		  * This method finds if a value is stored in the array.
+		  * This method implements binary search to return index where value is found, -1 if value is not present.
 		  * @param x is the array
 		  * @param n is the size of the input to be checked
 		  * @param v is the value to be found
@@ -97,7 +97,7 @@ public class SortTools {
 		}
 		
 		/**
-		  * This method sorts an array in a non-decreasing order..
+		  * This method sorts an array in a non-decreasing order using insertion sort algorithm.
 		  * @param x is the array
 		  * @param n is the size of the input to be checked
 		  */
