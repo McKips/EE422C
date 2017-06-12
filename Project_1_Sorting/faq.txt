@@ -1,0 +1,27 @@
+
+Q1: I resubmitted my SortTools.java file after finding an error and noticed that Canvas automatically changed the file name to SortTools-1.java. Will this be a problem during grading?
+A1: No.
+
+
+
+Q2: 
+I am trying to run the script in my mac but it says "python2 command not found"
+
+python --version shows me Python 2.7.10 installed.
+A2: We intended for the script to be run from the ECE LRC machines for reasons such as this. Many Linux distributions will have an explicit python2 binary due to there being Python 2 and Python 3 around.
+If you really want to run it on your Mac, go into the perform_grading.sh file and change the instance of "python2" to just "python".  Make sure you have the other dependencies like Maven installed on your Mac.
+
+Q3: I have a weird leftover file in their folder on kamek that cannot be deleted.
+A3: A workaround solution is to run the script in a fresh directory.
+
+Q4: May I have System.exit() in my code?
+A4: No. It breaks the JUNIT testing script.
+
+Q5: What score should I get when I pass both the sample tests given?
+A5: helper_scripts/score_extractor.py assigns a weight of 2 points to one JUnit test and 3 points to the other test, so passing them both means getting a grade of 5.
+
+Q6: Am I allowed to share test cases with other students?
+A6: No, you are not allowed to share test cases for this particular assignment.  For later ones, sharing is allowed.
+
+Q7: Do we need to account for preconditions in our code? Or can we assume that they will always be true and won't be tested for. 
+A7: No need to check whether the preconditions are true.
