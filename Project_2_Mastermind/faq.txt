@@ -1,0 +1,59 @@
+Q1. Am I allowed to use an external file to store guesses?
+A1: No, that is bad programming style.
+
+Q2. Can we use add new variables or methods to GamingConfiguration for our own purposes?
+A2. You are not to turn in GamingConfiguration.java, so you can do what you want with it.  But remember that finally, your code has to work with our GamingConfiguration.java.
+
+Q3. Are we creating the main()?
+A3. Yes, in Driver.java.
+
+Q4. Are we supposed to shoot out an error if the player inputs a guess that contains "colors" that aren't in the GameConfiguration colors array?
+A4. Yes.
+
+Q5. What Linux command could I use to zip up my assignment2 folder? How about unzipping to check?
+A5:
+	zip -r Project2_xyz123.zip assignment2
+Copy the zip file to a different directory, and then:
+	unzip Project2_xyz123.zip
+
+Q6. Would any color in the GameConfiguration.Colors String array field always be represented by a String with a single char, and not a String with multiple chars?
+A6. Yes, only single char, and only capital letters.
+
+Q7. Is it alright if we use a static scanner in our driver class?
+A7. No, it might mess up our grading script initialization.
+
+Q8. Where exactly do we have blank lines?
+A8. As per the example output in the document, you should have a blank line after printing INVALID_GUESS, the history, the secret code, and the prompt for a new game at the end. The document does not specify a blank line after the response to a valid guess. However, since this is a bit inconsistent, having a blank line after a valid guess is also acceptable. 
+
+Q9. Is it ok for "Welcome to Mastermind" to print every time you start a new game? Or, should it only print once at the new game?
+A9. Only print once at the beginning. (page 3 of the PDF)
+
+Q10. For the history command, if the user inputs HISTORY as his first guess, would there just be a blank line since there is no history of guesses yet?
+
+A10. You should print nothing, since there have been no guesses. As for spacing, it doesn't really matter since you're not printing anything. So your output will look like
+
+Welcome to Mastermind.
+Do you want to play a new game? (Y/N):
+Y
+
+You have 12 guess(es) left.
+Enter guess:
+HISTORY
+
+You have 12 guess(es) left.
+Enter guess:
+
+Q11. Corner cases in the GameConfiguration.java fields like setting numPegs = 0 (all guesses are invalid), setting colors to empty (crash while generating secret code) or numGuesses = 0 (you lose immediately) are not defined in the PDF. Should we be coding to handle such errors or can we expect you to stick with usable values (just as we can expect you to only give "Y" or "N" in response to new game requests)?
+A11. Since the behavior for those edge cases hasn't been defined, we will not test your programs for those situations. So you can assume that numPegs will always be greater than zero, there will be at least one element in the colors array, and that that the number of guesses will be greater than zero.
+
+Q12. I cannot remove old files for new run on kamek.
+A12. You might have to create a new directory as a workaround.
+
+Q13. When I resubmitted another zip file to canvas Project2 Code. But for my new submission, the file name changed to Project2_myEID-1.zip on canvas. Will this cause problems on the grading?
+A13. No, this is fine.
+
+Q14. From reading the PDF I wasn't sure if the history should include the total move history for the session or just one game.
+A14. The history command should output all the guesses for the current game only.
+
+Q15. How do I use the sample_tests_for_students folder?  And is this in addition to the grading script that you have provided?
+A15. The sample_tests_for_students has a README.txt.  Yes, it is in addition to the grading script.  You MUST run the grading script.  The sample_tests_for_students tests are optional, but highly recommended.
