@@ -6,6 +6,11 @@ import java.util.*;
 public class Driver {
   public static void main (String[] args) {
     boolean run = true;
+    boolean testMode = false;
+    if(args.length != 0){
+      if(args.equals("1"))
+        testMode = true;
+    }
 
     System.out.println("Welcome to Mastermind.");
 
@@ -13,16 +18,16 @@ public class Driver {
       System.out.println("Do you want to play a new game? (Y/N) :");
 
       Scanner kb = new Scanner(System.in);
-      String play = kb.next();
+      String play = kb.nextLine();
 
-      if(play == "Y")
+      if(play.equals("Y"))
         runGame();
-      else if (play == "N")
+      else
         run = false;
     }
   }
 
   public static void runGame() {
-
+    Game mastermind = new Game(testMode);
   }
 }
