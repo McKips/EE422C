@@ -7,7 +7,7 @@ public class Game{
   private static int numOfGuesses;
   private static int numOfPegs;
   private static int track;
-  private static String pegColors[];
+  private static String[] pegColors;
   private static String secretCode;
   private static boolean deciphered;
   private static String[] history;
@@ -40,6 +40,12 @@ public class Game{
       return false;
     if(!code.equals(code.toUpperCase()))
       return false;
+    /*char[] decode = code.toCharArray();
+    for(int i = 0; i < numOfPegs; i++){
+      int val = pegColors.indexOf(decode[i]);
+      if (val == -1)
+        return false;
+    }*/
     return true;
   }
   public static void update(String guess){
@@ -57,9 +63,10 @@ public class Game{
     }
     char[] secCod = secretCode.toCharArray();
     for(int i = 0; i < code.length(); i++){
-      int val = code.indexOf(secCod[i]);
-      if(val == i)
+      int val = code.indexOf(secCod[i], i);
+      if(val == i){
         posRight += 1;
+      }
       else if (val != -1)
         posWrong += 1;
     }
