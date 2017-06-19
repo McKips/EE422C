@@ -1,0 +1,22 @@
+Welcome to Mastermind.
+Do you want to play a new game? (Y/N) :
+
+Secret code: OPGB
+
+You have 12 guess(es) left.
+Enter guess: 
+1b_2w
+
+You have 11 guess(es) left.
+Enter guess: 
+0b_3w
+
+You have 10 guess(es) left.
+Enter guess: 
+2b_2w
+
+You have 9 guess(es) left.
+Enter guess: 
+4b_0w
+You win!
+

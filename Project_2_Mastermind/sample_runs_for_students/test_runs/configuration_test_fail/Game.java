@@ -77,7 +77,7 @@ public class Game{
 
   /* Updates guess history and decrements number of guesses left. */
   public static void update(String guess, String hint){
-    history[track] = guess + " -> " + hint;
+    history[track] = guess + hint;
     track += 1;
     numOfGuesses -= 1;
   }
@@ -92,12 +92,9 @@ public class Game{
     }
     char[] pegGuess = code.toCharArray();
     char[] secCode = secretCode.toCharArray();
-    char[] arr = new char[numOfPegs];
-    for(int i = 0; i < numOfPegs; i++)
-      arr[i] = 'x';
     for(int i = 0; i < numOfPegs; i++){
       if(pegGuess[i] == secCode[i]){
-        arr[i] = 'B';
+        posRight++;
         pegGuess[i] = 0;
       }
     }
@@ -105,18 +102,11 @@ public class Game{
       for(int j = 0; j < numOfPegs; j++){
         if (pegGuess[i] == 0)
           break;
-        if(pegGuess[i] == secCode[j] && arr[j] == 'x'){
-          arr[j] = 'W';
-          pegGuess[i] = 0;
+        if(pegGuess[i] == secCode[j]){
+          posWrong++;
           break;
         }
       }
-    }
-    for(int i = 0; i < numOfPegs; i++){
-      if(arr[i] == 'B')
-        posRight++;
-      else if(arr[i] == 'W')
-        posWrong++;
     }
     return (posRight + "b_" + posWrong + "w");
   }
