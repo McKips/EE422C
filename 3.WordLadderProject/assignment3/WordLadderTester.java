@@ -1,4 +1,3 @@
-
 package assignment3;
 
 import static org.junit.Assert.assertEquals;
