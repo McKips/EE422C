@@ -54,6 +54,7 @@ public class GraphMaker{
 
   public void addRoots (String word) {
     if (findRoot(word) == null){
+      System.out.println(word);
       roots.add(new Root(word));
     }
   }

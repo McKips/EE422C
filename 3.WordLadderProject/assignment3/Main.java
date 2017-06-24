@@ -35,23 +35,21 @@ public class Main {
       ps = System.out;			// default output to Stdout
     }
     initialize();
-    GraphMaker make = new GraphMaker();
-    Set<String> dictionary = makeDictionary();
-
-    String test = "ROSES";
-    for(int i = 0; i < test.length(); i++){
-      char[] beg = test.toCharArray();
-      for(char letter = 'A'; letter <= 'Z'; letter++){
-        beg[i] = letter;
-        String newWord = new String(beg);
-        make.buildGraph(newWord,dictionary,i+1);
-      }
     }
-    make.connectNodes();
-    //make.bfs(test);
-    make.printTree(test);
-    // TODO methods to read in words, output ladder
   }
+	public static boolean differByOne(String s1, String s2) {
+		if (s1.length() != s2.length())
+			return false;
+
+		int diff = 0;
+		for (int i = 0; i < s1.length(); i++) {
+			if (s1.charAt(i) != s2.charAt(i) && diff++ > 1) {
+				return false;
+			}
+		}
+
+		return true;
+	}
 
   public static void initialize() {
     // initialize your static variables or constants here.
