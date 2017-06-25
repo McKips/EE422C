@@ -17,7 +17,7 @@ public class Graph {
       return;
     newNode = new Node(word);
     nodes.add(newNode);
-    System.out.println("New node with: " + word);
+    //System.out.println("New node with: " + word);
   }
 
   public void addNeighbors(String spongebob, String patrick){
@@ -30,18 +30,7 @@ public class Graph {
     sponge.neighbors.add(pat);
     pat.neighbors.add(sponge);
 
-    System.out.println("Two neighbors are: " + spongebob + " " + patrick);
-  }
-
-  public void completeGraph(Set<String> dictionary){
-    for (Node n : nodes){
-      for(String s: dictionary){
-        if(Main.differByOne(n.word,s)){
-          addNode(s);
-          addNeighbors(n.word,s);
-        }
-      }
-    }
+    //System.out.println("Two neighbors are: " + spongebob + " " + patrick);
   }
 
   public Node find(String word){
@@ -52,15 +41,4 @@ public class Graph {
     return null;
   }
 
-  class Node {
-    HashSet<Node> neighbors;
-    String word;
-    boolean visited;
-
-    Node(String word){
-      this.word = word;
-      neighbors = new HashSet<Node>();
-      visited = false;
-    }
-  }
 }
