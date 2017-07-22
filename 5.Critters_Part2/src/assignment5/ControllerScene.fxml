@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane maxHeight="Infinity" maxWidth="Infinity" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="assignment5.Controller">
+   <VBox maxHeight="Infinity" maxWidth="Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox maxHeight="Infinity" maxWidth="Infinity" prefHeight="200.0" prefWidth="600.0">
+         <VBox maxHeight="Infinity" maxWidth="Infinity" prefHeight="200.0" prefWidth="300.0">
+            <Label maxHeight="Infinity" maxWidth="Infinity" text="Number of Critters to Make">
+               <VBox.margin>
+                  <Insets left="5.0" top="5.0" />
+               </VBox.margin>
+            </Label>
+            <HBox maxHeight="Infinity" maxWidth="Infinity" prefHeight="33.0" prefWidth="200.0">
+               <Slider fx:id="numCrittersSlider" blockIncrement="1.0" maxHeight="Infinity" maxWidth="Infinity" minorTickCount="4" prefHeight="39.0" prefWidth="200.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0">
+                  <HBox.margin>
+                     <Insets left="5.0" />
+                  </HBox.margin>
+               </Slider>
+               <Label fx:id="numCritters" maxHeight="Infinity" maxWidth="Infinity" text="1">
+                  <HBox.margin>
+                     <Insets bottom="25.0" />
+                  </HBox.margin>
+               </Label>
+            </HBox>
+            <Label maxHeight="Infinity" maxWidth="Infinity" text="Multiplier">
+               <VBox.margin>
+                  <Insets left="5.0" />
+               </VBox.margin>
+            </Label>
+            <HBox maxHeight="Infinity" maxWidth="Infinity" prefHeight="39.0" prefWidth="237.0">
+               <Slider fx:id="multiCrittersSlider" blockIncrement="0.1" majorTickUnit="2.0" max="10.0" maxHeight="Infinity" maxWidth="Infinity" minorTickCount="1" prefHeight="39.0" prefWidth="200.0" showTickLabels="true" showTickMarks="true" value="1.0">
+                  <HBox.margin>
+                     <Insets left="5.0" />
+                  </HBox.margin>
+               </Slider>
+               <Label fx:id="multiCritters" maxHeight="Infinity" maxWidth="Infinity" text="1">
+                  <HBox.margin>
+                     <Insets bottom="25.0" />
+                  </HBox.margin>
+               </Label>
+            </HBox>
+            <ChoiceBox fx:id="choiceBox" maxHeight="Infinity" maxWidth="Infinity">
+               <VBox.margin>
+                  <Insets left="5.0" />
+               </VBox.margin>
+            </ChoiceBox>
+            <HBox maxHeight="Infinity" maxWidth="Infinity" prefHeight="39.0" prefWidth="200.0">
+               <Button fx:id="makeCritter" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" text="Make">
+                  <HBox.margin>
+                     <Insets bottom="2.0" left="5.0" top="2.0" />
+                  </HBox.margin>
+               </Button>
+               <Label fx:id="crittersToMake" maxHeight="Infinity" maxWidth="Infinity" text="0 Critters ">
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+                  <HBox.margin>
+                     <Insets left="2.0" top="5.0" />
+                  </HBox.margin>
+               </Label>
+            </HBox>
+            <HBox maxHeight="Infinity" maxWidth="Infinity" prefHeight="100.0" prefWidth="200.0">
+               <Button fx:id="runStats" maxHeight="Infinity" maxWidth="Infinity" mnemonicParsing="false" text="Show Stats For: ">
+                  <HBox.margin>
+                     <Insets left="5.0" />
+                  </HBox.margin>
+               </Button>
+               <ChoiceBox fx:id="statsCritter" maxHeight="Infinity" maxWidth="Infinity">
+                  <HBox.margin>
+                     <Insets left="2.0" />
+                  </HBox.margin>
+               </ChoiceBox>
+            </HBox>
+         </VBox>
+         <VBox maxHeight="Infinity" maxWidth="Infinity" prefHeight="200.0" prefWidth="180.0">
+            <Label fx:id="animSpeed" maxHeight="Infinity" maxWidth="Infinity" text="Animation Speed: 0">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Label>
+            <Label maxHeight="Infinity" maxWidth="Infinity" text="Increment" />
+            <HBox maxHeight="Infinity" maxWidth="Infinity" prefHeight="18.0" prefWidth="167.0">
+               <Button fx:id="speedInc1" mnemonicParsing="false" text="1">
+                  <font>
+                     <Font size="10.0" />
+                  </font>
+                  <HBox.margin>
+                     <Insets top="2.0" />
+                  </HBox.margin>
+               </Button>
+               <Button fx:id="speedInc5" mnemonicParsing="false" text="5">
+                  <font>
+                     <Font size="10.0" />
+                  </font>
+                  <HBox.margin>
+                     <Insets left="2.0" top="2.0" />
+                  </HBox.margin>
+               </Button>
+               <Button fx:id="speedInc10" mnemonicParsing="false" text="10">
+                  <font>
+                     <Font size="10.0" />
+                  </font>
+                  <HBox.margin>
+                     <Insets left="2.0" top="2.0" />
+                  </HBox.margin>
+               </Button>
+               <Button fx:id="speedInc50" mnemonicParsing="false" text="50">
+                  <font>
+                     <Font size="10.0" />
+                  </font>
+                  <HBox.margin>
+                     <Insets left="2.0" top="2.0" />
+                  </HBox.margin>
+               </Button>
+            </HBox>
+            <HBox maxHeight="Infinity" maxWidth="Infinity" prefHeight="20.0" prefWidth="167.0">
+               <Button fx:id="speedInc100" mnemonicParsing="false" text="100">
+                  <font>
+                     <Font size="11.0" />
+                  </font>
+                  <HBox.margin>
+                     <Insets top="2.0" />
+                  </HBox.margin>
+               </Button>
+               <Button fx:id="speedReset" mnemonicParsing="false" text="Reset">
+                  <font>
+                     <Font size="11.0" />
+                  </font>
+                  <HBox.margin>
+                     <Insets left="19.0" top="2.0" />
+                  </HBox.margin>
+               </Button>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="75.0" maxHeight="Infinity" maxWidth="Infinity" prefHeight="20.0" prefWidth="167.0">
+               <Button fx:id="stepWorld" mnemonicParsing="false" text="Step">
+                  <font>
+                     <Font size="11.0" />
+                  </font>
+                  <HBox.margin>
+                     <Insets top="2.0" />
+                  </HBox.margin>
+               </Button>
+               <Button fx:id="runWorld" mnemonicParsing="false" text="Run">
+                  <font>
+                     <Font size="11.0" />
+                  </font>
+                  <HBox.margin>
+                     <Insets left="2.0" top="2.0" />
+                  </HBox.margin>
+               </Button>
+            </HBox>
+         </VBox>
+         <VBox maxHeight="Infinity" maxWidth="Infinity" prefHeight="200.0" prefWidth="200.0">
+            <Label fx:id="labelNumberSeed" maxHeight="Infinity" maxWidth="Infinity" text="Number: 0  x Multiplier: 0">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Label>
+            <HBox maxHeight="Infinity" maxWidth="Infinity" prefHeight="148.0" prefWidth="167.0">
+               <Slider fx:id="numSeedSlider" blockIncrement="1.0" maxHeight="Infinity" maxWidth="Infinity" minorTickCount="4" orientation="VERTICAL" showTickLabels="true" showTickMarks="true" snapToTicks="true">
+                  <padding>
+                     <Insets left="10.0" />
+                  </padding>
+               </Slider>
+               <Slider fx:id="multiSeedSlider" blockIncrement="0.1" majorTickUnit="2.0" max="10.0" maxHeight="Infinity" maxWidth="Infinity" minorTickCount="1" orientation="VERTICAL" showTickLabels="true" showTickMarks="true">
+                  <padding>
+                     <Insets left="40.0" />
+                  </padding>
+               </Slider>
+            </HBox>
+            <Button fx:id="seedNumber" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" text="Set Seed Number: 0">
+               <font>
+                  <Font size="10.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="10.0" top="5.0" />
+               </VBox.margin>
+            </Button>
+         </VBox>
+      </HBox>
+      <HBox maxHeight="Infinity" maxWidth="Infinity" prefHeight="200.0" prefWidth="600.0">
+         <TextArea fx:id="textArea" maxHeight="Infinity" maxWidth="Infinity" prefHeight="190.0" prefWidth="545.0">
+            <HBox.margin>
+               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </HBox.margin>
+         </TextArea>
+         <Button fx:id="quitWorld" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" text="Quit">
+            <HBox.margin>
+               <Insets top="169.0" />
+            </HBox.margin>
+         </Button>
+      </HBox>
+   </VBox>
+</AnchorPane>
