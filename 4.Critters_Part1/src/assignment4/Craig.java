@@ -30,9 +30,7 @@ public class Craig extends Critter {
 		
 		if (getEnergy() > 150) {
 			Craig child = new Craig();
-			for (int k = 0; k < 8; k += 1) {
-				child.genes[k] = this.genes[k];
-			}
+			System.arraycopy(this.genes, 0, child.genes, 0, 8);
 			int g = Critter.getRandomInt(8);
 			while (child.genes[g] == 0) {
 				g = Critter.getRandomInt(8);
