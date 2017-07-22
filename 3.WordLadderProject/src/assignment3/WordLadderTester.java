@@ -1,8 +1,7 @@
 package assignment3;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -10,8 +9,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.Assert.*;
 /**
  * This is the sample test cases for students
  * @author lisahua
@@ -111,7 +109,7 @@ public class WordLadderTester {
 		ArrayList<String> res = Main.getWordLadderBFS("twixt", "hakus");
 		outContent.reset();
 		Main.printLadder(res);
-		String str = outContent.toString().replace("\n", "").replace(".", "").trim();
+		String str = outContent.toString().replace("\n", "").replace("", "").trim();
 		assertEquals("no word ladder can be found between twixt and hakus", str);
 	}
 }

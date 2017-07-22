@@ -1,15 +1,15 @@
 package assignment3;
 
-import java.util.*;
+import java.util.HashSet;
 
 public class Node {
-    ArrayList<String> neighbors;
+    HashSet<String> neighbors;
     String word;
     Node parent;
 
     public Node(String word){
         this.word = word.toLowerCase();
-        neighbors = new ArrayList<String>();
+        neighbors = new HashSet<String>();
         parent = null;
 
         for(int i = 0; i < word.length(); i++){
