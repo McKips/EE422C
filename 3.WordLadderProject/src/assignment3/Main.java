@@ -194,7 +194,7 @@ public class Main {
 
         if(ladder.size() == 2)
         {
-            System.out.println("no word ladder can be found between " + ladder.get(0).toLowerCase() + " and " + ladder.get(1).toLowerCase() + ".");
+            System.out.println("no word ladder can be found between " + ladder.get(0).toLowerCase() + " and " + ladder.get(1).toLowerCase());
         }
         else if(ladder.size() > 2)
         {
