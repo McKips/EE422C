@@ -2,14 +2,14 @@ package assignment3;
 
 import java.util.HashSet;
 
-public class Node {
+class Node {
     HashSet<String> neighbors;
     String word;
     Node parent;
 
-    public Node(String word){
+    Node(String word){
         this.word = word.toLowerCase();
-        neighbors = new HashSet<String>();
+        neighbors = new HashSet<>();
         parent = null;
 
         for(int i = 0; i < word.length(); i++){

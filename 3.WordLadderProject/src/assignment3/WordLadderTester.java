@@ -62,7 +62,7 @@ public class WordLadderTester {
 		ArrayList<String> res = Main.getWordLadderBFS("hello", "cells");
 
 		if (res != null) {
-			HashSet<String> set = new HashSet<String>(res);
+			HashSet<String> set = new HashSet<>(res);
 			assertEquals(set.size(), res.size());
 		}
 		assertTrue(verifyLadder(res));
@@ -74,7 +74,7 @@ public class WordLadderTester {
 	public void testDFS1() {
 		ArrayList<String> res = Main.getWordLadderDFS("hello", "cells");
 		if (res != null) {
-			HashSet<String> set = new HashSet<String>(res);
+			HashSet<String> set = new HashSet<>(res);
 			assertEquals(set.size(), res.size());
 		}
 		assertTrue(verifyLadder(res));
@@ -87,7 +87,7 @@ public class WordLadderTester {
 	public void testBFS2() {
 		ArrayList<String> res = Main.getWordLadderBFS("aldol", "drawl");
 		if (res != null) {
-			HashSet<String> set = new HashSet<String>(res);
+			HashSet<String> set = new HashSet<>(res);
 			assertEquals(set.size(), res.size());
 		}
 		assertTrue(res == null || res.size() == 0 || res.size() == 2);
@@ -98,7 +98,7 @@ public class WordLadderTester {
 	public void testDFS2() {
 		ArrayList<String> res = Main.getWordLadderDFS("aldol", "drawl");
 		if (res != null) {
-			HashSet<String> set = new HashSet<String>(res);
+			HashSet<String> set = new HashSet<>(res);
 			assertEquals(set.size(), res.size());
 		}
 		assertTrue(res == null || res.size() == 0 || res.size() == 2);
