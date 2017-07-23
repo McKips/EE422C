@@ -1,109 +1,127 @@
 // insert header here
 package assignment6;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class Theater {
-	/*
-	 * Represents a seat in the theater
-	 * A1, A2, A3, ... B1, B2, B3 ...
-	 */
-	static class Seat {
-		private int rowNum;
-		private int seatNum;
 
-		public Seat(int rowNum, int seatNum) {
-			this.rowNum = rowNum;
-			this.seatNum = seatNum;
-		}
+    private HashMap<Seat,Ticket> seatInfo;
 
-		public int getSeatNum() {
-			return seatNum;
-		}
+    /*
+     * Represents a seat in the theater
+     * A1, A2, A3, ... B1, B2, B3 ...
+     */
+    static class Seat {
+        private int rowNum;
+        private int seatNum;
 
-		public int getRowNum() {
-			return rowNum;
-		}
+        public Seat(int rowNum, int seatNum) {
+            this.rowNum = rowNum;
+            this.seatNum = seatNum;
+        }
 
-		@Override
-		public String toString() {
-			// TODO: Implement this method to return the full Seat location ex: A1
-			return null;
-		}
-	}
+        public int getSeatNum() {
+            return seatNum;
+        }
 
-  /*
-	 * Represents a ticket purchased by a client
-	 */
-	static class Ticket {
-		private String show;
-		private String boxOfficeId;
-		private Seat seat;
-	  private int client;
+        public int getRowNum() {
+            return rowNum;
+        }
 
-		public Ticket(String show, String boxOfficeId, Seat seat, int client) {
-			this.show = show;
-			this.boxOfficeId = boxOfficeId;
-			this.seat = seat;
-			this.client = client;
-		}
+        @Override
+        public String toString() {
+            // TODO: Implement this method to return the full Seat location ex: A1
+            String seatPos = "";
+            while(this.rowNum%26 == 0){
+                seatPos += ("A" + rowNum%26);
+            }
+            seatPos += ("A" + rowNum%26 + seatNum);
+            return seatPos;
+        }
+    }
 
-		public Seat getSeat() {
-			return seat;
-		}
+    /*
+       * Represents a ticket purchased by a client
+       */
+    static class Ticket {
+        private String show;
+        private String boxOfficeId;
+        private Seat seat;
+        private int client;
 
-		public String getShow() {
-			return show;
-		}
+        public Ticket(String show, String boxOfficeId, Seat seat, int client) {
+            this.show = show;
+            this.boxOfficeId = boxOfficeId;
+            this.seat = seat;
+            this.client = client;
+        }
 
-		public String getBoxOfficeId() {
-			return boxOfficeId;
-		}
+        public Seat getSeat() {
+            return seat;
+        }
 
-		public int getClient() {
-			return client;
-		}
+        public String getShow() {
+            return show;
+        }
 
-		@Override
-		public String toString() {
-			// TODO: Implement this method to return a string that resembles a ticket
-			return null;
-		}
-	}
+        public String getBoxOfficeId() {
+            return boxOfficeId;
+        }
 
-	public Theater(int numRows, int seatsPerRow, String show) {
-		// TODO: Implement this constructor
-	}
+        public int getClient() {
+            return client;
+        }
 
-	/*
-	 * Calculates the best seat not yet reserved
-	 *
- 	 * @return the best seat or null if theater is full
+        @Override
+        public String toString() {
+            // TODO: Implement this method to return a string that resembles a ticket
+
+            return null;
+        }
+    }
+
+    public Theater(int numRows, int seatsPerRow, String show) {
+        // TODO: Implement this constructor
+        seatInfo = new HashMap<>();
+        for(int i=0; i<numRows; i++){
+            for(int j=0; j<seatsPerRow; j++){
+                Seat seats = new Seat(i,j);
+                Ticket tickets = new Ticket(show,"",seats,-1);
+                seatInfo.put(seats,tickets);
+            }
+        }
+    }
+
+    /*
+     * Calculates the best seat not yet reserved
+     *
+      * @return the best seat or null if theater is full
    */
-	public Seat bestAvailableSeat() {
-		//TODO: Implement this method
-		return null;
-	}
+    public Seat bestAvailableSeat() {
+        //TODO: Implement this method
+        return null;
+    }
 
-	/*
-	 * Prints a ticket for the client after they reserve a seat
+    /*
+     * Prints a ticket for the client after they reserve a seat
    * Also prints the ticket to the console
-	 *
+     *
    * @param seat a particular seat in the theater
    * @return a ticket or null if a box office failed to reserve the seat
    */
-	public Ticket printTicket(String boxOfficeId, Seat seat, int client) {
-		//TODO: Implement this method
-		return null;
-	}
+    public Ticket printTicket(String boxOfficeId, Seat seat, int client) {
+        //TODO: Implement this method
+        return null;
+    }
 
-	/*
-	 * Lists all tickets sold for this theater in order of purchase
-	 *
+    /*
+     * Lists all tickets sold for this theater in order of purchase
+     *
    * @return list of tickets sold
    */
-	public List<Ticket> getTransactionLog() {
-		//TODO: Implement this method
+    public List<Ticket> getTransactionLog() {
+        //TODO: Implement this method
         return null;
-	}
+    }
 }
