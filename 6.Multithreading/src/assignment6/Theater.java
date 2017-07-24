@@ -1,24 +1,25 @@
 // insert header here
 package assignment6;
 
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Theater {
 
-    private HashMap<Seat,Ticket> seatInfo;
+    private TreeMap<Seat,Ticket> seatMap;
 
     /*
      * Represents a seat in the theater
      * A1, A2, A3, ... B1, B2, B3 ...
      */
-    static class Seat {
+    static class Seat implements Comparable<Seat>{
         private int rowNum;
         private int seatNum;
+        private boolean reserved;
 
         public Seat(int rowNum, int seatNum) {
             this.rowNum = rowNum;
             this.seatNum = seatNum;
+            this.reserved = false;
         }
 
         public int getSeatNum() {
@@ -32,12 +33,30 @@ public class Theater {
         @Override
         public String toString() {
             // TODO: Implement this method to return the full Seat location ex: A1
-            String seatPos = "";
-            while(this.rowNum%26 == 0){
-                seatPos += ("A" + rowNum%26);
+            StringBuilder seatPos = new StringBuilder();
+            int row = rowNum;
+            while(row >= 26){
+                seatPos.append((char) ('A' + row % 26));
+                row /= 26;
             }
-            seatPos += ("A" + rowNum%26 + seatNum);
-            return seatPos;
+            seatPos.append((char) ('A' + row % 26));
+            seatPos.append(seatNum);
+            return seatPos.toString();
+        }
+
+        @Override
+        public int compareTo(Seat o) {
+            if( this.rowNum < o.rowNum )
+                return -1;
+            else if( this.rowNum > o.rowNum )
+                return 1;
+            else{
+                if(this.seatNum < o.seatNum)
+                    return -1;
+                else if (this.seatNum > o.seatNum)
+                    return 1;
+            }
+            return 0;
         }
     }
 
@@ -76,19 +95,20 @@ public class Theater {
         @Override
         public String toString() {
             // TODO: Implement this method to return a string that resembles a ticket
-
-            return null;
+            return "Show: " + show + "\n" +
+                    "Box Office ID: " + boxOfficeId + "\n" +
+                    "Seat: " + seat + "\n" +
+                    "Client: " + client + "\n";
         }
     }
 
     public Theater(int numRows, int seatsPerRow, String show) {
-        // TODO: Implement this constructor
-        seatInfo = new HashMap<>();
+        seatMap = new TreeMap<>();
         for(int i=0; i<numRows; i++){
             for(int j=0; j<seatsPerRow; j++){
                 Seat seats = new Seat(i,j);
                 Ticket tickets = new Ticket(show,"",seats,-1);
-                seatInfo.put(seats,tickets);
+                seatMap.put(seats,tickets);
             }
         }
     }
@@ -99,7 +119,11 @@ public class Theater {
       * @return the best seat or null if theater is full
    */
     public Seat bestAvailableSeat() {
-        //TODO: Implement this method
+        for(Map.Entry<Seat,Ticket> bestSeat : seatMap.entrySet()){
+            Seat seat = bestSeat.getKey();
+            if( !seat.reserved )
+                return seat;
+        }
         return null;
     }
 
@@ -112,6 +136,9 @@ public class Theater {
    */
     public Ticket printTicket(String boxOfficeId, Seat seat, int client) {
         //TODO: Implement this method
+        Ticket tick = seatMap.get(seat);
+        tick.boxOfficeId = boxOfficeId;
+        tick.client = client;
         return null;
     }
 
@@ -121,7 +148,11 @@ public class Theater {
    * @return list of tickets sold
    */
     public List<Ticket> getTransactionLog() {
-        //TODO: Implement this method
-        return null;
+        List<Ticket> ticketList = new ArrayList<>();
+        for(Map.Entry<Seat,Ticket> addTicket : seatMap.entrySet()){
+            boolean reserved = addTicket.getKey().reserved;
+            ticketList.add( reserved ? addTicket.getValue(): null);
+        }
+        return ticketList;
     }
 }
