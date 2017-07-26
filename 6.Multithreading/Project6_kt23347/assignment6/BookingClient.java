@@ -1,4 +1,3 @@
-// Insert header here
 package assignment6;
 
 import java.util.ArrayList;
