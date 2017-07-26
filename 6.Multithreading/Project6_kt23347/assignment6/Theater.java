@@ -158,6 +158,7 @@ public class Theater {
         Ticket tick = seatMap.get(seat);
         tick.boxOfficeId = boxOfficeId;
         tick.client = client;
+        System.out.println(tick);
         return tick;
     }
 

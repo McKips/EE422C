@@ -14,19 +14,18 @@ public class BoxOffice implements Runnable {
     @Override
     public void run() {
         while (line > 0) {
-            Theater.Seat seat = theater.bestAvailableSeat();
-            if (seat == null) {
-                if (theater.soldOut()) {
-                    System.out.println("Sorry, we are sold out!");
-                    return;
+                Theater.Seat seat = theater.bestAvailableSeat();
+                if (seat == null) {
+                    if (theater.soldOut()) {
+                        System.out.println("Sorry, we are sold out!");
+                        return;
+                    }
+                } else {
+                    Theater.Ticket tick = theater.printTicket(boxOffice, seat, 0);
+                    if (tick == null)
+                        continue;
+                    line -= 1;
                 }
-            } else {
-                Theater.Ticket tick = theater.printTicket(boxOffice, seat, 0);
-                if (tick == null)
-                    continue;
-                line -= 1;
-                System.out.println(tick);
-            }
             try {
                 Thread.sleep(50);
             } catch (InterruptedException e) {
