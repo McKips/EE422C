@@ -1,25 +1,32 @@
-// insert header here
 package assignment6;
 
 import java.util.*;
 
 public class Theater {
 
-    private TreeMap<Seat,Ticket> seatMap;
+    private TreeMap<Seat, Ticket> seatMap;
+    private int clients;
+    private int totalSeats;
+
+    public boolean soldOut() {
+        return clients >= totalSeats;
+    }
 
     /*
      * Represents a seat in the theater
      * A1, A2, A3, ... B1, B2, B3 ...
      */
-    static class Seat implements Comparable<Seat>{
+    static class Seat implements Comparable<Seat> {
         private int rowNum;
         private int seatNum;
         private boolean reserved;
+        private int numClient;
 
         public Seat(int rowNum, int seatNum) {
             this.rowNum = rowNum;
             this.seatNum = seatNum;
             this.reserved = false;
+            this.numClient = 0;
         }
 
         public int getSeatNum() {
@@ -30,28 +37,31 @@ public class Theater {
             return rowNum;
         }
 
+        public int getNumClient() { return numClient; }
+
+
         @Override
         public String toString() {
-            // TODO: Implement this method to return the full Seat location ex: A1
             StringBuilder seatPos = new StringBuilder();
             int row = rowNum;
-            while(row >= 26){
+            while (row >= 26) {
                 seatPos.append((char) ('A' + row % 26));
-                row /= 26;
+                row = row / 26 - 1;
             }
             seatPos.append((char) ('A' + row % 26));
+            seatPos.reverse();
             seatPos.append(seatNum);
             return seatPos.toString();
         }
 
         @Override
         public int compareTo(Seat o) {
-            if( this.rowNum < o.rowNum )
+            if (this.rowNum < o.rowNum)
                 return -1;
-            else if( this.rowNum > o.rowNum )
+            else if (this.rowNum > o.rowNum)
                 return 1;
-            else{
-                if(this.seatNum < o.seatNum)
+            else {
+                if (this.seatNum < o.seatNum)
                     return -1;
                 else if (this.seatNum > o.seatNum)
                     return 1;
@@ -94,7 +104,6 @@ public class Theater {
 
         @Override
         public String toString() {
-            // TODO: Implement this method to return a string that resembles a ticket
             return "Show: " + show + "\n" +
                     "Box Office ID: " + boxOfficeId + "\n" +
                     "Seat: " + seat + "\n" +
@@ -104,25 +113,30 @@ public class Theater {
 
     public Theater(int numRows, int seatsPerRow, String show) {
         seatMap = new TreeMap<>();
-        for(int i=0; i<numRows; i++){
-            for(int j=0; j<seatsPerRow; j++){
-                Seat seats = new Seat(i,j);
-                Ticket tickets = new Ticket(show,"",seats,-1);
-                seatMap.put(seats,tickets);
+        totalSeats = numRows*seatsPerRow;
+        clients = 0;
+        for (int i = 0; i < numRows; i++) {
+            for (int j = 1; j <= seatsPerRow; j++) {
+                Seat seats = new Seat(i, j);
+                Ticket tickets = new Ticket(show, "", seats, -1);
+                seatMap.put(seats, tickets);
             }
         }
+
     }
+
 
     /*
      * Calculates the best seat not yet reserved
      *
       * @return the best seat or null if theater is full
    */
-    public Seat bestAvailableSeat() {
-        for(Map.Entry<Seat,Ticket> bestSeat : seatMap.entrySet()){
+    public synchronized Seat bestAvailableSeat() {
+        for (Map.Entry<Seat, Ticket> bestSeat : seatMap.entrySet()) {
             Seat seat = bestSeat.getKey();
-            if( !seat.reserved )
+            if (!seat.reserved) {
                 return seat;
+            }
         }
         return null;
     }
@@ -134,12 +148,17 @@ public class Theater {
    * @param seat a particular seat in the theater
    * @return a ticket or null if a box office failed to reserve the seat
    */
-    public Ticket printTicket(String boxOfficeId, Seat seat, int client) {
-        //TODO: Implement this method
+    public synchronized Ticket printTicket(String boxOfficeId, Seat seat, int client) {
+        if(seat.reserved){
+            return null;
+        }
+        seat.reserved = true;
+        clients += 1;
+        client = clients;
         Ticket tick = seatMap.get(seat);
         tick.boxOfficeId = boxOfficeId;
         tick.client = client;
-        return null;
+        return tick;
     }
 
     /*
@@ -149,9 +168,9 @@ public class Theater {
    */
     public List<Ticket> getTransactionLog() {
         List<Ticket> ticketList = new ArrayList<>();
-        for(Map.Entry<Seat,Ticket> addTicket : seatMap.entrySet()){
+        for (Map.Entry<Seat, Ticket> addTicket : seatMap.entrySet()) {
             boolean reserved = addTicket.getKey().reserved;
-            ticketList.add( reserved ? addTicket.getValue(): null);
+            ticketList.add(reserved ? addTicket.getValue() : null);
         }
         return ticketList;
     }
