@@ -104,10 +104,32 @@ public class Theater {
 
         @Override
         public String toString() {
-            return "Show: " + show + "\n" +
-                    "Box Office ID: " + boxOfficeId + "\n" +
-                    "Seat: " + seat + "\n" +
-                    "Client: " + client + "\n";
+            StringBuilder seq1 = new StringBuilder();
+            for (int i=0; i<31; i++)
+                seq1.append('-');
+            seq1.append('\n');
+            StringBuilder seq2 = new StringBuilder();
+            seq2.append('|');
+            seq2.append(" Show: " + show);
+            for(int i = seq2.length(); i<30;i++)
+                seq2.append(' ');
+            seq2.append("|\n");
+            StringBuilder seq3 = new StringBuilder();
+            seq3.append('|' + " Box Office ID: " + boxOfficeId);
+            for(int i = seq3.length(); i<30;i++)
+                seq3.append(' ');
+            seq3.append("|\n");
+            StringBuilder seq4 = new StringBuilder();
+            seq4.append('|' + " Seat: " + seat);
+            for(int i = seq4.length(); i<30;i++)
+                seq4.append(' ');
+            seq4.append("|\n");
+            StringBuilder seq5 = new StringBuilder();
+            seq5.append('|' + " Client: " + client);
+            for(int i = seq5.length(); i<30;i++)
+                seq5.append(' ');
+            seq5.append("|\n");
+            return seq1.toString() + seq2.toString() + seq3.toString() + seq4.toString() + seq5.toString() + seq1.toString();
         }
     }
 
