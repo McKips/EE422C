@@ -110,22 +110,22 @@ public class Theater {
             seq1.append('\n');
             StringBuilder seq2 = new StringBuilder();
             seq2.append('|');
-            seq2.append(" Show: " + show);
+            seq2.append(" Show: ").append(show);
             for(int i = seq2.length(); i<30;i++)
                 seq2.append(' ');
             seq2.append("|\n");
             StringBuilder seq3 = new StringBuilder();
-            seq3.append('|' + " Box Office ID: " + boxOfficeId);
+            seq3.append('|' + " Box Office ID: ").append(boxOfficeId);
             for(int i = seq3.length(); i<30;i++)
                 seq3.append(' ');
             seq3.append("|\n");
             StringBuilder seq4 = new StringBuilder();
-            seq4.append('|' + " Seat: " + seat);
+            seq4.append('|' + " Seat: ").append(seat);
             for(int i = seq4.length(); i<30;i++)
                 seq4.append(' ');
             seq4.append("|\n");
             StringBuilder seq5 = new StringBuilder();
-            seq5.append('|' + " Client: " + client);
+            seq5.append('|' + " Client: ").append(client);
             for(int i = seq5.length(); i<30;i++)
                 seq5.append(' ');
             seq5.append("|\n");
